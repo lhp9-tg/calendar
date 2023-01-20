@@ -53,39 +53,44 @@
 
             <?php }
             for ($i = 1; $i < $numberofthefirstday; $i++) { ?>
-                <div class='items gray'></div>
+                <div class='items gray' data-title=''></div>
                 <?php }
 
             for ($j = 0; $j <= $nbofdaysinmonth - 1; $j++) {
                 $uniqtimestamp = $timestampfirst + ($j * 86400);
+
+                $uniqnameoftheday = date('l j F Y', $uniqtimestamp);
+                $uniqnameoftheday = str_replace($dayus, $dayfr, $uniqnameoftheday);
+                $uniqnameoftheday = str_replace($monthus, $months, $uniqnameoftheday);
+
                 if ($uniqtimestamp === $today) { ?>
-                    <div class='items blue'>
+                    <div class='items blue' data-title='<?= $uniqnameoftheday ?>'>
                         <div class='day'><?= date('j', $uniqtimestamp) ?></div>
-                        <div class='item '><?= 'Aujourd\'hui' ?></div>
+                        <div class='item' data-desc="Aujourd'hui">Aujourd'hui</div>
                     </div>
                 <?php } elseif (array_key_exists($uniqtimestamp, $holidates)) { ?>
-                    <div class='items red'>
+                    <div class='items red' data-title='<?= $uniqnameoftheday ?>'>
                         <div class='day'><?= date('j', $uniqtimestamp) ?></div>
                         <?php foreach ($holidates[$uniqtimestamp] as $values) { ?>
-                            <div class='item '><?= $values ?></div>
+                            <div class='item' data-desc='<?= $values ?>'><?= $values ?></div>
                         <?php } ?>
                     </div>
                 <?php } elseif (array_key_exists($uniqtimestamp, $appointementdates)) { ?>
-                    <div class='items green'>
+                    <div class='items green' data-title='<?= $uniqnameoftheday ?>'>
                         <div class='day'><?= date('j', $uniqtimestamp) ?></div>
                         <?php foreach ($appointementdates[$uniqtimestamp] as $values) { ?>
-                            <div class='item '><img src="assets/img/rendez-vous.png" alt="icon_rendez-vous"><?= $values ?></div>
+                            <div class='item' data-desc='<?= $values ?>'><img src="assets/img/rendez-vous.png" alt="icon_rendez-vous"><?= $values ?></div>
                         <?php } ?>
                     </div>
                 <?php } elseif (array_key_exists($uniqtimestamp, $birthdates)) { ?>
-                    <div class='items yellow'>
+                    <div class='items yellow' data-title='<?= $uniqnameoftheday ?>'>
                         <div class='day'><?= date('j', $uniqtimestamp) ?></div>
                         <?php foreach ($birthdates[$uniqtimestamp] as $values) { ?>
-                            <div class='item '><img src="assets/img/birthday.png" alt="icon_birthday"><?= $values ?></div>
+                            <div class='item' data-desc='<?= $values ?>'><img src="assets/img/birthday.png" alt="icon_birthday"><?= $values ?></div>
                         <?php } ?>
                     </div>
                 <?php } else { ?>
-                    <div class='items'>
+                    <div class='items' data-title=''>
                         <div class='day'><?= date('j', $uniqtimestamp) ?></div>
                         <div class='item'> </div>
                     </div>
@@ -93,7 +98,7 @@
             }
 
             for ($k = $numberofthelastday; $k < 7; $k++) { ?>
-                <div class='items gray'></div>
+                <div class='items gray' data-title=''></div>
             <?php } ?>
         </div>
     </div>
@@ -101,7 +106,8 @@
     <div class="modal">
         <div class="modal-content">
                 <span class="close-button">&times;</span>
-                <h2>La date</h2>
+                <h2 class="modaltitle"></h2>
+                <p class="modaldesc"></p>
         </div>
     </div>
     

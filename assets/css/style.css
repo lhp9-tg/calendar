@@ -113,6 +113,11 @@ h1 img {
     padding: 1rem 1.5rem;
     width: 24rem;
     border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   
+    align-items: center;
+    box-shadow: 5px 5px 15px 5px #000000;
 }
 
 .show-modal {
@@ -122,6 +127,7 @@ h1 img {
 }
 
 .close-button {
+    align-self: flex-end;
     float: right;
     width: 1rem;
     line-height: 1.5rem;
@@ -135,3 +141,10 @@ h1 img {
     background-color: #adadad;
 }
 
+.modaltitle {
+    margin-bottom: 1em;
+}
+
+.modaldesc {
+    margin-bottom: 1em;
+}

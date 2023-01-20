@@ -16,8 +16,22 @@ function windowOnClick(event) {
     }
 }
 
+
 trigger.forEach(element => {
-    element.addEventListener("click", toggleModal)
+    if (element.dataset.title !== '') {
+        element.addEventListener("click", toggleModal)
+        element.addEventListener("click", function() {
+            if (element.dataset.title !== undefined) {
+            const modaltitle = element.dataset.title
+            document.querySelector(".modaltitle").innerHTML = modaltitle
+            }
+            if (element.children[1].dataset.desc !== undefined) {
+            const modaldesc = element.children[1].dataset.desc
+            document.querySelector(".modaldesc").innerHTML = modaldesc
+            }
+        })
+    }
+    
 });
 
 closeButton.addEventListener("click", toggleModal)

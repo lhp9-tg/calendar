@@ -12,6 +12,7 @@ $birthdays = $data['birthday'];
 $dayfr = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
 $dayus = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 $months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+$monthus = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 // Vérification de la présence des paramètres GET
 
@@ -77,7 +78,7 @@ foreach ($appointements as $appointement) {
 // Création du tableau associatif des jours fériés
 
 $publicholidays = [
-    mktime (0, 0, 0, 1, 1, $yearChosen) => 'Jour de l\'an',
+    mktime (0, 0, 0, 1, 1, $yearChosen) => "Jour de l'an",
     easter_date($yearChosen)+1*86400 => 'Lundi de Pâques',
     mktime (0, 0, 0, 5, 1, $yearChosen) => 'Fête du Travail',
     mktime (0, 0, 0, 5, 8, $yearChosen) => 'Victoire 45',
@@ -106,12 +107,11 @@ foreach ($publicholidays as $key => $publicholiday) {
 
 $today = strtotime('today midnight');
 
-
 // Création des variable de timestamp pour le premier et le dernier jour du mois
 
 $date = 'Mois de '.$months[$monthchosen-1].' '.$yearChosen;
 
-$nbofdaysinmonth = (new DateTime($yearChosen.'-'.$monthchosen))-> format('t');
+$nbofdaysinmonth = (new DateTime($yearChosen.'-'.$monthchosen)) -> format('t');
 
 $timestampfirst = mktime (0, 0, 0, $monthchosen, 1, $yearChosen);
 $nameofthefirstday = date("l", $timestampfirst);
