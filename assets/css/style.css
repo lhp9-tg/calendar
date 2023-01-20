@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f2f2f2;
+    margin: 5px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: auto;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    }
+
+form {
+    margin-bottom: 2em;
+}
+
+.days {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    border: 1px black solid;
+    background-color: beige;
+}
+
+.day {
+    font-weight: bolder;
+}
+
+.items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+    border: 1px black solid;
+    min-height: 80px;
+}
+
+.items div {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.gray {
+    background-color: rgba(128, 128, 128, 0.575);
+}
+
+.blue {
+    background-color: rgba(0, 0, 255, 0.226);
+}
+
+.red {
+    background-color: rgba(255, 0, 0, 0.468)
+}
+
+.green {
+    background-color: rgba(0, 255, 0, 0.226);
+}
+
+.yellow {
+    background-color: rgba(255, 234, 0, 0.733);
+}
+
+.selectedmonth {
+    font-weight: bolder;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+img {
+    width: 25px;
+    height: 25px;
+    margin-bottom: -0.3em;
+    margin-right: 7px;
+}
+
+h1 img {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+    margin-bottom: -6px;
+}
+
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #cccccc6c;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #eeeeee;
+    padding: 1rem 1.5rem;
+    width: 24rem;
+    border-radius: 0.5rem;
+}
+
+.show-modal {
+    visibility: visible;
+    transform: scale(1);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.close-button {
+    float: right;
+    width: 1rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 30px;
+    background-color: #eeeeee;
+}
+
+.close-button:hover {
+    background-color: #adadad;
+}
+
